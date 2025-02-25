@@ -14,11 +14,12 @@ import java.time.Duration;
 public class LoginPage extends PageObject { // Renamed class to follow naming conventions
 
     // Extracted constants for better organization
-    private static final String ETALENT_HOMEPAGE_XPATH = "//a[contains(@href, 'login')]";
+    private static final String ETALENT_HOMEPAGE_XPATH = "//span[normalize-space()='Log In']";
+    // /html/body/app-root/app-home/div/div[1]/div/div[1]/div[2]/a[2]/span[1]
     private static final String URL = "https://etalente.co.za/";
-    private static final String USERNAME_INPUT_XPATH = "//input[@name='username']";
-    private static final String PASSWORD_INPUT_XPATH = "//input[@name='password']";
-    private static final String LOGIN_BUTTON_XPATH = "//button[text()='Login']";
+    private static final String USERNAME_INPUT_XPATH = "(//input[@id='mat-input-2'])[1]";
+    private static final String PASSWORD_INPUT_XPATH = "(//input[@id='mat-input-3'])[1]";
+    private static final String LOGIN_BUTTON_XPATH = "//span[contains(text(),'Login')]";
 
     // Additional methods can be added here for actions on the login page
 
