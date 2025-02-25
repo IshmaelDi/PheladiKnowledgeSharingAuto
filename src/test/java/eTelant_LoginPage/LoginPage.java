@@ -14,15 +14,27 @@ import java.time.Duration;
 public class LoginPage extends PageObject { // Renamed class to follow naming conventions
 
     // Extracted constants for better organization
-    private static final String ETALENT_HOMEPAGE_XPATH = "/html/body/app-root/app-home/div/div[1]/div/div[1]/div[2]/a[2]/span[1]";
-    private static final String URL = "https://www.etalent.com.ng/";
-    private static final String USERNAME_INPUT_XPATH = "Username";
-    private static final String PASSWORD_INPUT_XPATH = "Password";
-    private static final String LOGIN_BUTTON_XPATH = "Login";
+    private static final String ETALENT_HOMEPAGE_XPATH = "//a[contains(@href, 'login')]";
+    private static final String URL = "https://etalente.co.za/";
+    private static final String USERNAME_INPUT_XPATH = "//input[@name='username']";
+    private static final String PASSWORD_INPUT_XPATH = "//input[@name='password']";
+    private static final String LOGIN_BUTTON_XPATH = "//button[text()='Login']";
 
     // Additional methods can be added here for actions on the login page
 
     public void open_eTalent_homepage() {
-        getDriver()
+
+        getDriver().get(URL);
+        getDriver().manage().window().maximize();
+    }
+
+    public void login(String username, String password) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(ETALENT_HOMEPAGE_XPATH))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(USERNAME_INPUT_XPATH))).sendKeys(username);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(PASSWORD_INPUT_XPATH))).sendKeys(password);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(LOGIN_BUTTON_XPATH))).click();
     }
 }
+
