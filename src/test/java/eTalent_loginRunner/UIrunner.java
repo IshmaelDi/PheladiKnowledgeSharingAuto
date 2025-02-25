@@ -1,4 +1,13 @@
 package eTalent_loginRunner;
 
-public class UIrunner {
+import net.thucydides.core.pages.PageObject;
+
+public class UIrunner extends PageObject {
+
+
+    // eTalente Login Elements
+
+    Sting Username
+
+
 }
